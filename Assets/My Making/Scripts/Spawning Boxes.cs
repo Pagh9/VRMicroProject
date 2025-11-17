@@ -7,8 +7,13 @@ public class SpawningBoxes : MonoBehaviour
 
     public GameObject SpawnBox;
 
+    
+
+
     public int SpawnCount;
- 
+    public int DeSpawn;
+
+    public int MoveSpeed;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -30,5 +35,10 @@ public class SpawningBoxes : MonoBehaviour
             Instantiate(RedBox, transform.position, Quaternion.identity);
             SpawnCount++;
         }
+    }
+
+    public void MoveBox()
+    {
+        
     }
 }
