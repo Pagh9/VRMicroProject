@@ -2,7 +2,8 @@ using UnityEngine;
 
 public class BoxMovement : MonoBehaviour
 {
-
+    public GameObject RedBox;
+    public GameObject BlueBox;
     public int MovementSpeed;
     public float RotationSpeed;
     public Transform targetPoint;
