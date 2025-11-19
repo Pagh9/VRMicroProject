@@ -2,8 +2,7 @@ using UnityEngine;
 
 public class BoxMovement : MonoBehaviour
 {
-    public GameObject RedBox;
-    public GameObject BlueBox;
+
     public int MovementSpeed;
     public float RotationSpeed;
     public Transform targetPoint;
@@ -11,16 +10,18 @@ public class BoxMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (gameObject.transform.position.z <= -20)
+        {
+            Destroy(gameObject);
+        }
+        MoveTowardsTarget();
+
     }
 
     public void MoveTowardsTarget()
     {
-        transform.position = Vector3.MoveTowards(
-            transform.position,
-            targetPoint.position,
-            MovementSpeed * Time.deltaTime
-            );
+        transform.Translate(Vector3.back * MovementSpeed * Time.deltaTime); 
+
 
     }
 }
