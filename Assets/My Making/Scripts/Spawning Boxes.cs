@@ -9,7 +9,7 @@ using UnityEngine;
 public class SpawningBoxes : MonoBehaviour
 {
     public GameObject RedBox;
-   
+   public GameObject BlueBox;
 
     public GameObject[] SpawnPoints;
 
@@ -55,15 +55,16 @@ public class SpawningBoxes : MonoBehaviour
 
     public IEnumerator BoxSpawner()
     {
-        int i = UnityEngine.Random.Range(0, moves.Count-1);
+        int i = UnityEngine.Random.Range(0, moves.Count);
         foreach (int point in moves[i].movePoints)
         {
-            GameObject g = Instantiate(RedBox, SpawnPoints[point - 1].transform.position, transform.rotation);
-            switch(UnityEngine.Random.Range(0, 2))
-            {
-                case 0: g.GetComponent<MeshRenderer>().material.color = Color.red; break;
-                case 1: g.GetComponent<MeshRenderer>().material.color = Color.blue; break;
-            }
+            int random = UnityEngine.Random.Range(0, 2);
+            GameObject prefabToSpawn = (random == 0) ? RedBox : BlueBox;
+
+            GameObject g = Instantiate(prefabToSpawn, SpawnPoints[point - 1].transform.position, Quaternion.Euler(0,-90,0));
+            
+
+
             yield return new WaitForSeconds(1);
             
         }
