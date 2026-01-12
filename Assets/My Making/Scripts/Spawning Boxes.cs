@@ -9,8 +9,9 @@ using UnityEngine;
 public class SpawningBoxes : MonoBehaviour
 {
     public GameObject RedBox;
-   public GameObject BlueBox;
+    public GameObject BlueBox;
 
+    //Array of the lane spawn positions
     public GameObject[] SpawnPoints;
 
 
@@ -27,7 +28,9 @@ public class SpawningBoxes : MonoBehaviour
     void Start()
     {
        
-
+        // Creates a list of patterns. Each pattern spawns 4 boxes. Numbers are in which lane.
+        // Triggered every 4 second 
+        // Made a function instead of whriting it all in start.
         moves.Add(new Move( new int[4] { 1, 1, 1, 1 }));
         moves.Add(new Move(new int[4] {2,2,2,2 }));
         moves.Add(new Move(new int[4] { 3,3,3,3 }));
@@ -55,6 +58,7 @@ public class SpawningBoxes : MonoBehaviour
 
     public IEnumerator BoxSpawner()
     {
+        // Picks a random pattern or move that is in the start function.
         int i = UnityEngine.Random.Range(0, moves.Count);
         foreach (int point in moves[i].movePoints)
         {
@@ -63,7 +67,7 @@ public class SpawningBoxes : MonoBehaviour
 
             GameObject g = Instantiate(prefabToSpawn, SpawnPoints[point - 1].transform.position, Quaternion.Euler(0,-90,0));
             
-
+            // Waits before spawning the next box. 
 
             yield return new WaitForSeconds(1);
             

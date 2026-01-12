@@ -5,12 +5,15 @@ public class BoxMovement : MonoBehaviour
 {
 
     public int MovementSpeed;
+
+    // Planned features, not enough time
     public float RotationSpeed;
     public Transform targetPoint;
 
     
     private void Start()
     {
+        //Picks a rotation at random
         int angle = Random.Range(0, 4);
         switch (angle)
 
@@ -27,6 +30,7 @@ public class BoxMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Clean up if player dont destroy the object themselfes.
         if (gameObject.transform.position.z <= -20)
         {
             Destroy(gameObject);
@@ -36,7 +40,9 @@ public class BoxMovement : MonoBehaviour
     }
 
     public void MoveTowardsTarget()
+
     {
+        //Movement logic
         transform.Translate(Vector3.left * MovementSpeed * Time.deltaTime);
        
 
