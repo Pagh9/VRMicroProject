@@ -19,6 +19,7 @@ public class HandAnimator : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // This reads controller input values and feeds them to an Animator
         float trigger = triggerValue.action.ReadValue<float>();
         float grip = gripValue.action.ReadValue<float>();
 
